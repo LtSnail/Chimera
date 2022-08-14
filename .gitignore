@@ -1,4 +1,8 @@
+# Build artifacts
 build
+
+# IDE
+.vscode
 
 # APPLE
 .DS_Store
