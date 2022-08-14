@@ -14,9 +14,7 @@ public:
     }
 };
 
-int main()
+Chimera::Application* Chimera::CreateApplication()
 {
-    SandboxApp* app = new SandboxApp();
-    app->Run();
-    delete app;
+    return new SandboxApp();
 }

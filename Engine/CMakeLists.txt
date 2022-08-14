@@ -7,6 +7,7 @@ set(SOURCE_FILES
 set(HEADER_FILES
         src/Chimera/Application.h
         src/Chimera/Core.h
+        src/Chimera/EntryPoint.h
 )
 
 add_library(ChimeraEngine SHARED ${SOURCE_FILES} ${HEADER_FILES})

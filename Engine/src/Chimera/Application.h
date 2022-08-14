@@ -12,4 +12,7 @@ namespace Chimera
 
         void Run();
     };
+
+    // Should be defined in a client.
+    Application* CreateApplication();
 }
