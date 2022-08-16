@@ -15,3 +15,5 @@
 #else
     #define CH_API IMPORT
 #endif
+
+#define BIT(x) (1 << x)

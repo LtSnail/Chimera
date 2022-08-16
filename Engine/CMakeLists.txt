@@ -14,6 +14,8 @@ set(HEADER_FILES
         src/Chimera/Core.h
         src/Chimera/EntryPoint.h
         src/Chimera/Log.h
+        src/Chimera/Events/Event.h
+        src/Chimera/Events/KeyEvent.h
 )
 
 add_library(ChimeraEngine SHARED ${SOURCE_FILES} ${HEADER_FILES})
