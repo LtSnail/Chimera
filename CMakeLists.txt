@@ -13,5 +13,11 @@ endif()
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if (MSVC)
+    add_compile_options(/W4 /WX /Za /permissive-)
+else()
+    add_compile_options(-Wall -Wextra -pedantic -Werror)
+endif()
+
 add_subdirectory(Engine)
 add_subdirectory(Sandbox)
