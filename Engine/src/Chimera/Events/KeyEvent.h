@@ -39,4 +39,20 @@ namespace Chimera
     private:
         int m_RepeatCount;
     };
+
+    class CH_API KeyReleasedEvent : public KeyEvent<KeyReleasedEvent>
+    {
+    public:
+        KeyReleasedEvent(int keycode)
+            : KeyEvent(keycode) {}
+
+        std::string ToString() const
+        {
+            std::stringstream ss;
+            ss << "KeyReleasedEvent: " << m_KeyCode;
+            return ss.str();
+        }
+
+        EVENT_CLASS_TYPE(KeyReleased)
+    };
 }

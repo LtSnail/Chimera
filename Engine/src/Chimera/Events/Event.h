@@ -29,6 +29,7 @@ namespace Chimera
         EventTypeKeyPressed,
         EventTypeKeyReleased,
         EventTypeMouseButtonPressed,
+        EventTypeMouseButtonReleased,
         EventTypeMouseMoved,
         EventTypeMouseScrolled
     };
