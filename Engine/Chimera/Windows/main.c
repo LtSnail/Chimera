@@ -1,3 +1,7 @@
+#include "../EntryPoint.h"
+#include "../Application.h"
+#include "../Log.h"
+
 // TODO: use WinMain
 
 int main()

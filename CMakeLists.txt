@@ -1,23 +1,18 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Chimera)
+project(
+    Chimera
+    VERSION 0.1
+    DESCRIPTION "MacOS and Windows game engine"
+    LANGUAGES CXX
+)
 
-if(UNIX AND APPLE)
-    message(STATUS "Platform: MacOS")
-    add_compile_definitions(CH_PLATFORM_MACOS)
-elseif(WIN32)
-    message(STATUS "Platform: Windows")
-    add_compile_definitions(CH_PLATFORM_WINDOWS)
+if( CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME )
+    set( CMAKE_CXX_EXTENSIONS OFF )
+    set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 endif()
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set( ORGANIZATION Organization )
 
-if (MSVC)
-    add_compile_options(/W4 /WX /Za /permissive-)
-else()
-    add_compile_options(-Wall -Wextra -pedantic -Werror)
-endif()
-
-add_subdirectory(Engine)
-add_subdirectory(Sandbox)
+add_subdirectory( Engine )
+add_subdirectory( Sandbox )
