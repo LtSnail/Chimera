@@ -4,8 +4,8 @@
     #define EXPORT __declspec(dllexport)
     #define IMPORT __declspec(dllimport)
 #elif defined(CH_PLATFORM_MACOS)
-    #define EXPORT
-    #define IMPORT
+    #define EXPORT __attribute__ ((visibility ("default")))
+    #define IMPORT __attribute__ ((visibility ("default")))
 #else
     #error Unsupported platform!
 #endif
