@@ -35,7 +35,7 @@
    <key>CFBundlePackageType</key>
    <string>APPL</string>
    <key>NSPrincipalClass</key>
-   <string>NSApplication</string>
+   <string>ChimeraApplication</string>
    <key>NSMainStoryboardFile</key>
    <string>Main</string>
 </dict>
