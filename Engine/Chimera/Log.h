@@ -6,9 +6,9 @@
 
 #include "spdlog/spdlog.h"
 
-namespace CH_API Chimera
+namespace Chimera
 {
-    class Log
+    class CH_API Log
     {
     public:
         static void Init();
