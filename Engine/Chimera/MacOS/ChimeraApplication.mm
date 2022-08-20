@@ -4,7 +4,7 @@
 #include "../Core.h"
 #include "../Log.h"
 
-int ChimeraApplicationMain(int argc, const char **argv)
+int ChimeraApplicationMain(int argc, const char **argv, Chimera::Application* app)
 {
     (void)(argc);
     (void)(argv);
@@ -17,7 +17,6 @@ int ChimeraApplicationMain(int argc, const char **argv)
 	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 	Class principalClass =
 		NSClassFromString([infoDictionary objectForKey:@"NSPrincipalClass"]);
-	NSApplication *applicationObject = [principalClass sharedApplication];
     
     NSStoryboard* sb = [NSStoryboard storyboardWithName:@"Main"
                                                   bundle:nil];
@@ -32,21 +31,46 @@ int ChimeraApplicationMain(int argc, const char **argv)
 			withObject:nil
 			waitUntilDone:YES];
 	}
+    
+    delete app;
 	
 	return 0;
 }
 
-@implementation ChimeraApplication
+@implementation ChimeraApplication;
+
+- (void)_windowWillClose: (NSNotification*) notification
+{
+    AppDelegate* delegate = [NSApp delegate];
+    
+    if ([delegate respondsToSelector: @selector(applicationShouldTerminateAfterLastWindowClosed:)])
+    {
+        if ([delegate applicationShouldTerminateAfterLastWindowClosed: self])
+        {
+            [[NSNotificationCenter defaultCenter]
+                postNotificationName:NSApplicationWillTerminateNotification
+                object:NSApp];
+            
+            [self terminate: self];
+        }
+    }
+}
 
 - (void)run
 {
-//	[self finishLaunching];
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    
+    [nc addObserver: self selector: @selector(_windowWillClose:)
+        name: NSWindowWillCloseNotification object: nil];
+    
+	[self finishLaunching];
+    
 	[[NSNotificationCenter defaultCenter]
 		postNotificationName:NSApplicationWillFinishLaunchingNotification
 		object:NSApp];
-	[[NSNotificationCenter defaultCenter]
+	/*[[NSNotificationCenter defaultCenter]
 		postNotificationName:NSApplicationDidFinishLaunchingNotification
-		object:NSApp];
+		object:NSApp];*/
 	
 	shouldKeepRunning = YES;
 	do

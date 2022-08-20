@@ -63,7 +63,12 @@ target_link_libraries( ChimeraEngine
     ${DEPENDENCIES}
 )
 
-target_include_directories( ChimeraEngine PUBLIC External/spdlog/include ${CMAKE_CURRENT_SOURCE_DIR} )
+target_include_directories( ChimeraEngine 
+    PUBLIC
+    External/spdlog/include
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Chimera
+)
 
 target_compile_definitions( ChimeraEngine PUBLIC CH_BUILD_LIB )
 target_compile_features( ChimeraEngine PUBLIC cxx_std_17 )

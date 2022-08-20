@@ -1,6 +1,8 @@
 #import <Cocoa/Cocoa.h>
 
-int ChimeraApplicationMain(int argc, const char **argv);
+#include "Application.h"
+
+int ChimeraApplicationMain(int argc, const char **argv, Chimera::Application* app);
 
 @interface ChimeraApplication : NSApplication
 {
