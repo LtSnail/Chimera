@@ -1,7 +1,17 @@
 # Client Application
 
+if (APPLE)
+    set( SOURCE_EXTENSION mm )
+else()
+    set( SOURCE_EXTENSION cpp )
+endif()
+
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/SandboxApp.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/Generated/SandboxApp.${SOURCE_EXTENSION}
+)
+
 set( SOURCES
-    SandboxApp.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Generated/SandboxApp.${SOURCE_EXTENSION}
 )
 
 set( DEPENDENCIES

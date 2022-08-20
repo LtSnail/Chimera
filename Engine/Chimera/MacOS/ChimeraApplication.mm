@@ -2,7 +2,6 @@
 
 #include "../Application.h"
 #include "../Core.h"
-#include "../EntryPoint.h"
 #include "../Log.h"
 
 int ChimeraApplicationMain(int argc, const char **argv)
@@ -14,10 +13,6 @@ int ChimeraApplicationMain(int argc, const char **argv)
 
     CH_CORE_WARN("Core Log!");
     CH_INFO("Client Log!");
-
-    //Chimera::Application* app = Chimera::CreateApplication();
-    // app->Run();
-    //delete app;
 	
 	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 	Class principalClass =

@@ -32,7 +32,6 @@ if ( APPLE )
         Chimera/MacOS/GameViewController.mm
         Chimera/MacOS/Renderer.mm
         Chimera/MacOS/ChimeraApplication.mm
-        Chimera/MacOS/main.mm
     )
 
     set( ENGINE_SHADERS 
