@@ -1,5 +1,7 @@
 #import "ChimeraApplication.h"
 
+#import "AppDelegate.h"
+
 #include "../Application.h"
 #include "../Core.h"
 #include "../Log.h"
@@ -17,20 +19,22 @@ int ChimeraApplicationMain(int argc, const char **argv, Chimera::Application* ap
 	NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
 	Class principalClass =
 		NSClassFromString([infoDictionary objectForKey:@"NSPrincipalClass"]);
+    ChimeraApplication *applicationObject = [principalClass sharedApplication];
+
+    [NSApp setDelegate: [AppDelegate new]];
     
     NSStoryboard* sb = [NSStoryboard storyboardWithName:@"Main"
                                                   bundle:nil];
     NSWindowController* vc = [sb instantiateInitialController];
     [vc showWindow:nil];
 
-
-	if ([applicationObject respondsToSelector:@selector(run)])
-	{
-		[applicationObject
-			performSelectorOnMainThread:@selector(run)
-			withObject:nil
-			waitUntilDone:YES];
-	}
+    if ([applicationObject respondsToSelector:@selector(run)])
+    {
+        [applicationObject
+            performSelectorOnMainThread:@selector(run)
+            withObject:nil
+            waitUntilDone:YES];
+    }
     
     delete app;
 	
