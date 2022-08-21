@@ -2,9 +2,19 @@
 
 #import "AppDelegate.h"
 
-#include "../Application.h"
-#include "../Core.h"
-#include "../Log.h"
+#include "Application.h"
+#include "Core.h"
+#include "Log.h"
+
+@interface ChimeraApplication : NSApplication
+{
+	bool shouldKeepRunning;
+}
+
+- (void)run;
+- (void)terminate:(id)sender;
+
+@end
 
 int ChimeraApplicationMain(int argc, const char **argv, Chimera::Application* app)
 {

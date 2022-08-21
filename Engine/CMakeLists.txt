@@ -70,6 +70,7 @@ target_include_directories( ChimeraEngine
     ${CMAKE_CURRENT_SOURCE_DIR}/Chimera
 )
 
+target_precompile_headers( ChimeraEngine PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/chpch.h )
 target_compile_definitions( ChimeraEngine PUBLIC CHIMERA_BUILD_LIB )
 target_compile_features( ChimeraEngine PUBLIC cxx_std_17 )
 

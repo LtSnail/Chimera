@@ -1,6 +1,3 @@
-#import <simd/simd.h>
-#import <ModelIO/ModelIO.h>
-
 #import "Renderer.h"
 
 // Include header shared between C code here, which executes Metal API commands, and .metal files

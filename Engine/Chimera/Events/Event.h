@@ -1,9 +1,6 @@
 #pragma once
 
-#include <string>
-#include <functional>
-
-#include "../Core.h"
+#include "Core.h"
 
 namespace Chimera
 {

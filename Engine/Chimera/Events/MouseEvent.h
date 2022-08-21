@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Chimera
 {
     class CHIMERA_API MouseMovedEvent : public Event<MouseMovedEvent>

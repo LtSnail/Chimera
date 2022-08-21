@@ -6,6 +6,9 @@ Engine/Release
 Sandbox/Debug
 Sandbox/Release
 
+# PCH
+Engine/SharedPrecompiledHeaders
+
 # Generated sources
 Sandbox/Generated
 

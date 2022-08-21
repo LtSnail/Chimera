@@ -4,7 +4,7 @@ project(
     Chimera
     VERSION 0.1
     DESCRIPTION "MacOS and Windows game engine"
-    LANGUAGES CXX
+    LANGUAGES CXX OBJCXX
 )
 
 if( CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME )
