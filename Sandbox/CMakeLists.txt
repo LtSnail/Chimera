@@ -1,5 +1,9 @@
 # Client Application
 
+macro (set_xcode_property TARGET XCODE_PROPERTY XCODE_VALUE)
+    set_property (TARGET ${TARGET} PROPERTY XCODE_ATTRIBUTE_${XCODE_PROPERTY} ${XCODE_VALUE})
+endmacro (set_xcode_property)
+
 if (APPLE)
     set( SOURCE_EXTENSION mm )
 else()
@@ -49,6 +53,8 @@ if (APPLE)
         MACOSX_PACKAGE_LOCATION
         Resources
     )
+
+    set_xcode_property( Sandbox PRODUCT_BUNDLE_IDENTIFIER Sandbox )
     
     set( MACOSX_BUNDLE_GUI_IDENTIFIER Sandbox )
     set( MACOSX_BUNDLE_BUNDLE_NAME ${ORGANIZATION}.Sandbox )
