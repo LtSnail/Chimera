@@ -9,6 +9,7 @@ set( PROJECT_HEADERS
     Chimera/Events/KeyEvent.h
     Chimera/Events/MouseEvent.h
     Chimera/Events/ApplicationEvent.h
+    chpch.h
 )
 
 set( SOURCES
