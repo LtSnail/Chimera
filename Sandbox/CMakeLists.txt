@@ -38,7 +38,7 @@ set( RESOURCES
     ${BASE_RESOURCES}
 )
 
-if (APPLE)
+if ( APPLE )
     add_executable( Sandbox MACOSX_BUNDLE
         ${SOURCES}
         ${PUBLIC_HEADERS}
@@ -63,6 +63,14 @@ if (APPLE)
         PROPERTIES
         MACOSX_BUNDLE_INFO_PLIST
         ${CMAKE_CURRENT_SOURCE_DIR}/Resources/MacOS/Sandbox-Info.plist.in
+    )
+elseif ( WIN32 )
+    add_executable( Sandbox 
+        ${SOURCES}
+        ${PUBLIC_HEADERS}
+        ${PROJECT_HEADERS}
+        ${PRIVATE_HEADERS}
+        ${RESOURCES}
     )
 endif()
 

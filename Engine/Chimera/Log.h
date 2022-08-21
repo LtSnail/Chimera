@@ -4,6 +4,9 @@
 
 #include "spdlog/spdlog.h"
 
+#pragma warning(push)
+#pragma warning(disable:4251)
+
 namespace Chimera
 {
     class CHIMERA_API Log
@@ -19,6 +22,8 @@ namespace Chimera
         static std::shared_ptr<spdlog::logger> s_ClientLogger;
     };
 }
+
+#pragma warning(pop)
 
 // Core Log macros.
 #define CH_CORE_TRACE(...)   ::Chimera::Log::GetCoreLogger()->trace(__VA_ARGS__)
