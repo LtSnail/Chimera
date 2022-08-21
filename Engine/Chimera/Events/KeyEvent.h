@@ -7,7 +7,7 @@
 namespace Chimera
 {
     template <typename D>
-    class CH_API KeyEvent : public Event<KeyEvent<D>>
+    class CHIMERA_API KeyEvent : public Event<KeyEvent<D>>
     {
     public:
         inline int GetKeyCode() const { return m_KeyCode; }
@@ -20,7 +20,7 @@ namespace Chimera
         int m_KeyCode;
     };
 
-    class CH_API KeyPressedEvent : public KeyEvent<KeyPressedEvent>
+    class CHIMERA_API KeyPressedEvent : public KeyEvent<KeyPressedEvent>
     {
     public:
         KeyPressedEvent(int keycode, int repeatCount)
@@ -40,7 +40,7 @@ namespace Chimera
         int m_RepeatCount;
     };
 
-    class CH_API KeyReleasedEvent : public KeyEvent<KeyReleasedEvent>
+    class CHIMERA_API KeyReleasedEvent : public KeyEvent<KeyReleasedEvent>
     {
     public:
         KeyReleasedEvent(int keycode)

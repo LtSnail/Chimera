@@ -6,7 +6,7 @@
 
 namespace Chimera
 {
-    class CH_API WindowResizeEvent : public Event<WindowResizeEvent>
+    class CHIMERA_API WindowResizeEvent : public Event<WindowResizeEvent>
     {
     public:
         WindowResizeEvent(unsigned int width, unsigned int height)
@@ -23,7 +23,7 @@ namespace Chimera
         unsigned int m_Width, m_Height;
     };
 
-    class CH_API WindowsCloseEvent : public Event<WindowsCloseEvent>
+    class CHIMERA_API WindowsCloseEvent : public Event<WindowsCloseEvent>
     {
     public:
         WindowsCloseEvent() = default;
@@ -32,7 +32,7 @@ namespace Chimera
         EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
-    class CH_API AppTickEvent : public Event<AppTickEvent>
+    class CHIMERA_API AppTickEvent : public Event<AppTickEvent>
     {
     public:
         AppTickEvent() = default;
@@ -41,7 +41,7 @@ namespace Chimera
         EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
-    class CH_API AppUpdateEvent : public Event<AppUpdateEvent>
+    class CHIMERA_API AppUpdateEvent : public Event<AppUpdateEvent>
     {
     public:
         AppUpdateEvent() = default;
@@ -50,7 +50,7 @@ namespace Chimera
         EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
-    class CH_API AppRenderEvent : public Event<AppRenderEvent>
+    class CHIMERA_API AppRenderEvent : public Event<AppRenderEvent>
     {
     public:
         AppRenderEvent() = default;

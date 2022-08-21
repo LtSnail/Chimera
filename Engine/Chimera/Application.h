@@ -4,7 +4,7 @@
 
 namespace Chimera
 {
-    class CH_API Application
+    class CHIMERA_API Application
     {
     public:
         Application();

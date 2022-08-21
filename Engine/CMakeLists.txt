@@ -70,7 +70,7 @@ target_include_directories( ChimeraEngine
     ${CMAKE_CURRENT_SOURCE_DIR}/Chimera
 )
 
-target_compile_definitions( ChimeraEngine PUBLIC CH_BUILD_LIB )
+target_compile_definitions( ChimeraEngine PUBLIC CHIMERA_BUILD_LIB )
 target_compile_features( ChimeraEngine PUBLIC cxx_std_17 )
 
 if (MSVC)
@@ -82,9 +82,9 @@ endif()
 
 if( UNIX AND APPLE )
     message( STATUS "The target platform is MacOS" )
-    target_compile_definitions( ChimeraEngine PUBLIC CH_PLATFORM_MACOS )
+    target_compile_definitions( ChimeraEngine PUBLIC CHIMERA_PLATFORM_MACOS )
     target_compile_options( ChimeraEngine PRIVATE -fobjc-arc )
 elseif( WIN32 )
     message( STATUS "The target platform is Windows" )
-    target_compile_definitions( ChimeraEngine PUBLIC CH_PLATFORM_WINDOWS )
+    target_compile_definitions( ChimeraEngine PUBLIC CHIMERA_PLATFORM_WINDOWS )
 endif()

@@ -8,7 +8,7 @@
 
 namespace Chimera
 {
-    class CH_API Log
+    class CHIMERA_API Log
     {
     public:
         static void Init();

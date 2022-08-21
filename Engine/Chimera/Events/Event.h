@@ -51,7 +51,7 @@ namespace Chimera
 #define EVENT_CLASS_CATEGORY(category) int GetCategoryFlags() const { return category; }
 
     template<typename D>
-    class CH_API Event
+    class CHIMERA_API Event
     {
     public:
         EventType GetEventType() const

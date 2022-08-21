@@ -6,7 +6,7 @@
 
 namespace Chimera
 {
-    class CH_API MouseMovedEvent : public Event<MouseMovedEvent>
+    class CHIMERA_API MouseMovedEvent : public Event<MouseMovedEvent>
     {
     public:
         MouseMovedEvent(float x, float y)
@@ -29,7 +29,7 @@ namespace Chimera
         float m_MouseX, m_MouseY;
     };
 
-    class CH_API MouseScrolledEvent : public Event<MouseScrolledEvent>
+    class CHIMERA_API MouseScrolledEvent : public Event<MouseScrolledEvent>
     {
     public:
         MouseScrolledEvent(float xOffset, float yOffset)
@@ -53,7 +53,7 @@ namespace Chimera
     };
 
     template <typename D>
-    class CH_API MouseButtonEvent : public Event<MouseButtonEvent<D>>
+    class CHIMERA_API MouseButtonEvent : public Event<MouseButtonEvent<D>>
     {
     public:
         inline int GetMouseButton() const { return m_Button; }
@@ -67,7 +67,7 @@ namespace Chimera
         int m_Button;
     };
 
-    class CH_API MouseButtonPressedEvent : public MouseButtonEvent<MouseButtonPressedEvent>
+    class CHIMERA_API MouseButtonPressedEvent : public MouseButtonEvent<MouseButtonPressedEvent>
     {
     public:
         MouseButtonPressedEvent(int button)
@@ -83,7 +83,7 @@ namespace Chimera
         EVENT_CLASS_TYPE(MouseButtonPressed)
     };
 
-    class CH_API MouseButtonReleasedEvent : public MouseButtonEvent<MouseButtonReleasedEvent>
+    class CHIMERA_API MouseButtonReleasedEvent : public MouseButtonEvent<MouseButtonReleasedEvent>
     {
     public:
         MouseButtonReleasedEvent(int button)
