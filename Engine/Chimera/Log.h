@@ -4,8 +4,10 @@
 
 #include "spdlog/spdlog.h"
 
+#if defined(CHIMERA_PLATFORM_WINDOWS) 
 #pragma warning(push)
 #pragma warning(disable:4251)
+#endif
 
 namespace Chimera
 {
@@ -23,7 +25,9 @@ namespace Chimera
     };
 }
 
+#if defined(CHIMERA_PLATFORM_WINDOWS) 
 #pragma warning(pop)
+#endif
 
 // Core Log macros.
 #define CH_CORE_TRACE(...)   ::Chimera::Log::GetCoreLogger()->trace(__VA_ARGS__)
