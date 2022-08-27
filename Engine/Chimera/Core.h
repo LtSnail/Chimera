@@ -10,7 +10,7 @@
     #error Unsupported platform!
 #endif
 
-#if CHIMERA_BUILD_LIB
+#if defined(CHIMERA_BUILD_LIB)
     #define CHIMERA_API EXPORT
 #else
     #define CHIMERA_API IMPORT
