@@ -20,19 +20,15 @@ set( SOURCES
 if ( APPLE )
     set( PROJECT_HEADERS
         ${PROJECT_HEADERS}
-        Chimera/MacOS/ChimeraApplication.h
-        Chimera/MacOS/AppDelegate.h
-        Chimera/MacOS/GameViewController.h
-        Chimera/MacOS/ShaderTypes.h
-        Chimera/MacOS/Renderer.h
+        # Chimera/MacOS/GameViewController.h
+        # Chimera/MacOS/ShaderTypes.h
+        # Chimera/MacOS/Renderer.h
     )
 
     set( SOURCES
         ${SOURCES}
-        Chimera/MacOS/AppDelegate.mm
-        Chimera/MacOS/GameViewController.mm
-        Chimera/MacOS/Renderer.mm
-        Chimera/MacOS/ChimeraApplication.mm
+        # Chimera/MacOS/GameViewController.mm
+        # Chimera/MacOS/Renderer.mm
     )
 
     set( ENGINE_SHADERS 
