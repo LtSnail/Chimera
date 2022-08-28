@@ -2,6 +2,8 @@
 
 #include "Core.h"
 
+#include <string>
+
 namespace Chimera
 {
     // Blocking events, refactor to an event bus later on.
@@ -47,49 +49,52 @@ namespace Chimera
 
 #define EVENT_CLASS_CATEGORY(category) int GetCategoryFlags() const { return category; }
 
-    template<typename D>
     class CHIMERA_API Event
     {
+        friend class EventDispatcher;
     public:
-        EventType GetEventType() const
-        {
-            return self()->GetEventType();
-        }
-
-        const char* GetName() const
-        {
-            return self()->GetName();
-        }
-
-        int GetCategoryFlags() const
-        {
-            return self()->GetCategoryFlags();
-        }
-
-        std::string ToString() const
-        {
-            return GetName();
-        }
+        virtual EventType GetEventType() const = 0;
+        virtual const char* GetName() const = 0;
+        virtual int GetCategoryFlags() const = 0;
+        virtual std::string ToString() const { return GetName(); }
 
         inline bool IsInCategory(EventCategory category)
         {
             return GetCategoryFlags() & category;
         }
 
-        template <typename T>
-        void Dispatch(std::function<bool(T&)> func)
-        {
-            m_handled = func(*static_cast<T*>(this));
-        }
+        virtual ~Event() = default;
 
     protected:
-        Event() = default;
-        friend D;
-
         bool m_handled = false;
+    };
+
+    class EventDispatcher
+    {
+        template<typename T>
+        using EventFn = std::function<bool(T&)>;
+    public:
+        EventDispatcher(Event& ev)
+            : m_Event(ev) {}
+
+        template<typename T>
+        bool Dispatch(EventFn<T> func)
+        {
+            if (m_Event.GetEventType() == T::GetStaticType())
+            {
+                m_Event.m_handled = func(*(T*)&m_Event);
+                return true;
+            }
+
+            return false;
+        }
 
     private:
-        inline D& self() { return *static_cast<D*>(this); }
-        inline const D& self() const { return *static_cast<D*>(this); }
+        Event& m_Event;
     };
+
+    inline std::ostream& operator<<(std::ostream& os, const Event& ev)
+    {
+        return os << ev.ToString();
+    }
 }

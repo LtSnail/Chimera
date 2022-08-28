@@ -11,7 +11,7 @@ namespace Chimera
             do
             {
                 nsEvent = [NSApp nextEventMatchingMask:NSEventMaskAny untilDate:nil inMode:NSDefaultRunLoopMode dequeue:YES];
-                //Event curEvent;
+
                 switch(nsEvent.type)
                 {
                     case NSEventTypeSystemDefined:
@@ -35,10 +35,6 @@ namespace Chimera
                     default:
                         break;
                 }
-                //if(curEvent.type != EventType::None)
-                {
-                    //m_Queue.push(curEvent);
-                }
                 
                 [NSApp sendEvent:nsEvent];
             }
@@ -48,18 +44,18 @@ namespace Chimera
         [NSApp updateWindows];
     }
 
-    //Event& EventQueueMacOS::Front()
-    //{
-
-    //}
+    const Event& EventQueueMacOS::Front()
+    {
+        return m_Queue.front();
+    }
 
     void EventQueueMacOS::Pop()
     {
-
+        m_Queue.pop();
     }
 
     bool EventQueueMacOS::Empty()
     {
-        return false;
+        return m_Queue.empty();
     }
 }
