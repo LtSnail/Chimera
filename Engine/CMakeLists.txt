@@ -22,6 +22,7 @@ if ( APPLE )
     set( PROJECT_HEADERS
         ${PROJECT_HEADERS}
         Chimera/MacOS/EventQueueMacOS.h
+        Chimera/MacOS/WindowMacOS.h
         # Chimera/MacOS/GameViewController.h
         # Chimera/MacOS/ShaderTypes.h
         # Chimera/MacOS/Renderer.h
@@ -30,6 +31,7 @@ if ( APPLE )
     set( SOURCES
         ${SOURCES}
         Chimera/MacOS/EventQueueMacOS.mm
+        Chimera/MacOS/WindowMacOS.mm
         # Chimera/MacOS/GameViewController.mm
         # Chimera/MacOS/Renderer.mm
     )

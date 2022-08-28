@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include "EventQueue.h"
+#include "Window.h"
+
 namespace Chimera
 {
     Application::Application()
@@ -14,7 +17,8 @@ namespace Chimera
 
     void Application::Run()
     {
-        std::unique_ptr<EventQueue> eventQueue = EventQueue::CreateEventQueue();
+        auto eventQueue = EventQueue::CreateEventQueue();
+        auto window = Window::CreateWindow(WindowProps(), *eventQueue);
 
         bool isRunning = true;
 
