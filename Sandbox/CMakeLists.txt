@@ -4,18 +4,9 @@ macro (set_xcode_property TARGET XCODE_PROPERTY XCODE_VALUE)
     set_property (TARGET ${TARGET} PROPERTY XCODE_ATTRIBUTE_${XCODE_PROPERTY} ${XCODE_VALUE})
 endmacro (set_xcode_property)
 
-if (APPLE)
-    set( SOURCE_EXTENSION mm )
-else()
-    set( SOURCE_EXTENSION cpp )
-endif()
-
-configure_file (${CMAKE_CURRENT_SOURCE_DIR}/SandboxApp.in
-    ${CMAKE_CURRENT_SOURCE_DIR}/Generated/SandboxApp.${SOURCE_EXTENSION}
-)
 
 set( SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/Generated/SandboxApp.${SOURCE_EXTENSION}
+    ${CMAKE_CURRENT_SOURCE_DIR}/SandboxApp.cpp
 )
 
 set( DEPENDENCIES
@@ -23,6 +14,10 @@ set( DEPENDENCIES
 )
 
 if (APPLE)
+    set( SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/MacOS/SandboxApp.mm
+    )
+
     set( GLOBAL_RESOURCES
         Resources/MacOS/Assets.xcassets
     )
