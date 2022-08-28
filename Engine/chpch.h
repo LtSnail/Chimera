@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <queue>
 
 #ifdef CHIMERA_PLATFORM_WINDOWS
     #include <sdkddkver.h>

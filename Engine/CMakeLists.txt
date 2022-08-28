@@ -5,6 +5,7 @@ set( PROJECT_HEADERS
     Chimera/Core.h
     Chimera/EntryPoint.h
     Chimera/Log.h
+    CHimera/EventQueue.h
     Chimera/Events/Event.h
     Chimera/Events/KeyEvent.h
     Chimera/Events/MouseEvent.h
@@ -20,6 +21,7 @@ set( SOURCES
 if ( APPLE )
     set( PROJECT_HEADERS
         ${PROJECT_HEADERS}
+        Chimera/MacOS/EventQueueMacOS.h
         # Chimera/MacOS/GameViewController.h
         # Chimera/MacOS/ShaderTypes.h
         # Chimera/MacOS/Renderer.h
@@ -27,6 +29,8 @@ if ( APPLE )
 
     set( SOURCES
         ${SOURCES}
+        Chimera/MacOS/ApplicationMacOS.cpp
+        Chimera/MacOS/EventQueueMacOS.mm
         # Chimera/MacOS/GameViewController.mm
         # Chimera/MacOS/Renderer.mm
     )

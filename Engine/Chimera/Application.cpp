@@ -14,9 +14,17 @@ namespace Chimera
 
     void Application::Run()
     {
-        while (true)
+        std::unique_ptr<EventQueue> eventQueue = CreateEventQueue();
+
+        bool isRunning = true;
+
+        while (isRunning)
         {
-            /* code */
+            while (!eventQueue->Empty())
+            {
+            }
+
+            eventQueue->Pop();
         }
     }
 }
