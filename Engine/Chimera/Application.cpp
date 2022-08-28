@@ -18,7 +18,7 @@ namespace Chimera
     void Application::Run()
     {
         auto eventQueue = EventQueue::CreateEventQueue();
-        auto window = Window::CreateWindow(WindowProps(), *eventQueue);
+        auto window = Window::CreateAppWindow(WindowProps(), *eventQueue);
 
         bool isRunning = true;
 

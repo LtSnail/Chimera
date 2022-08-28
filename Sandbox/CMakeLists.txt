@@ -60,7 +60,7 @@ if ( APPLE )
         ${CMAKE_CURRENT_SOURCE_DIR}/Resources/MacOS/Sandbox-Info.plist.in
     )
 elseif ( WIN32 )
-    add_executable( Sandbox 
+    add_executable( Sandbox WIN32 
         ${SOURCES}
         ${PUBLIC_HEADERS}
         ${PROJECT_HEADERS}

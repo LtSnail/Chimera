@@ -52,6 +52,19 @@ if ( APPLE )
         ${METALKIT}
         ${MODELIO}
     )
+elseif ( WIN32 )
+    set( PROJECT_HEADERS
+        ${PROJECT_HEADERS}
+        Chimera/Windows/WindowsEventQueue.h
+        Chimera/Windows/WindowsWindow.h
+	Chimera/Windows/main.inc
+    )
+
+    set( SOURCES
+        ${SOURCES}
+        Chimera/Windows/WindowsEventQueue.cpp
+        Chimera/Windows/WindowsWindow.cpp
+    )
 endif()
 
 add_library( ChimeraEngine
