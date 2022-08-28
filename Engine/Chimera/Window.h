@@ -43,6 +43,6 @@ namespace Chimera
         virtual bool IsVSync() const = 0;
 
         static std::unique_ptr<Window> CreateWindow(const WindowProps& props,
-                                                    const EventQueue& eventQueue);
+                                                    EventQueue& eventQueue);
     };
 }

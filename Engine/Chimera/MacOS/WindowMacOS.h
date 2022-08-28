@@ -9,7 +9,7 @@ namespace Chimera
     class WindowMacOS : public Window
     {
     public:
-        WindowMacOS(const WindowProps& props, const EventQueue& eventQueue);
+        WindowMacOS(const WindowProps& props, EventQueue& eventQueue);
         ~WindowMacOS();
 
         virtual void OnUpdate() override;
@@ -21,7 +21,7 @@ namespace Chimera
         inline virtual bool IsVSync() const override { return true; }
 
     private:
-        void Init(const WindowProps& props, const EventQueue& eventQueue);
+        void Init(const WindowProps& props, EventQueue& eventQueue);
         void Shutdown();
 
         // ChimeraWindow*

@@ -60,7 +60,7 @@
 namespace Chimera
 {
     WindowMacOS::WindowMacOS(const WindowProps& props, 
-        const EventQueue& eventQueue)
+        EventQueue& eventQueue)
     {
         Init(props, eventQueue);
     }
@@ -75,7 +75,7 @@ namespace Chimera
 
     }
 
-    void WindowMacOS::Init(const WindowProps& props, const EventQueue& eventQueue)
+    void WindowMacOS::Init(const WindowProps& props, EventQueue& eventQueue)
     {	
         UNUSED(eventQueue);
 
@@ -139,7 +139,7 @@ namespace Chimera
 	
         m_Window = ((__bridge_retained void*)w);
         m_View = ((__bridge_retained void*)v);
-        // eventQueue.Update();
+        eventQueue.Update();
         m_Props = props;
     }
         
@@ -151,7 +151,7 @@ namespace Chimera
     }
 
     std::unique_ptr<Window> Window::CreateWindow(const WindowProps& props, 
-        const EventQueue& eventQueue)
+        EventQueue& eventQueue)
     {
         return std::make_unique<WindowMacOS>(props, eventQueue);
     }
