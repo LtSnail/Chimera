@@ -24,6 +24,8 @@ namespace Chimera
 
         while (isRunning)
         {
+            eventQueue->Update();
+            
             while (!eventQueue->Empty())
             {
                 eventQueue->Pop();
