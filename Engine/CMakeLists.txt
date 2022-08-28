@@ -29,7 +29,6 @@ if ( APPLE )
 
     set( SOURCES
         ${SOURCES}
-        Chimera/MacOS/ApplicationMacOS.cpp
         Chimera/MacOS/EventQueueMacOS.mm
         # Chimera/MacOS/GameViewController.mm
         # Chimera/MacOS/Renderer.mm

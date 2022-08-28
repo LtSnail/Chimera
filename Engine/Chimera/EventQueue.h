@@ -15,5 +15,7 @@ namespace Chimera
         virtual bool Empty() = 0;
 
         virtual ~EventQueue() = default;
+
+        static std::unique_ptr<EventQueue> CreateEventQueue();
     };
 }

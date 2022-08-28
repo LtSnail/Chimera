@@ -58,4 +58,9 @@ namespace Chimera
     {
         return m_Queue.empty();
     }
+
+    std::unique_ptr<EventQueue> EventQueue::CreateEventQueue()
+    {
+        return std::make_unique<EventQueueMacOS>();
+    }
 }

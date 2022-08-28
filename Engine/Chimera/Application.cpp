@@ -14,7 +14,7 @@ namespace Chimera
 
     void Application::Run()
     {
-        std::unique_ptr<EventQueue> eventQueue = CreateEventQueue();
+        std::unique_ptr<EventQueue> eventQueue = EventQueue::CreateEventQueue();
 
         bool isRunning = true;
 
