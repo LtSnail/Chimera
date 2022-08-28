@@ -150,7 +150,7 @@ namespace Chimera
         __unused id viewObj = (__bridge_transfer id)m_View;
     }
 
-    std::unique_ptr<Window> Window::CreateWindow(const WindowProps& props, 
+    std::unique_ptr<Window> Window::CreateAppWindow(const WindowProps& props, 
         EventQueue& eventQueue)
     {
         return std::make_unique<WindowMacOS>(props, eventQueue);
