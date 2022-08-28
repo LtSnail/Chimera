@@ -2,7 +2,7 @@
  * and compiled in a client application
  */
 
- #import <Cocoa/Cocoa.h>
+#include "chpch.h"
 
 @interface ChimeraApplication : NSApplication
 

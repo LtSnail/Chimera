@@ -1,6 +1,6 @@
-#include "EventQueue.h"
+#include "chpch.h"
 
-#include <queue>
+#include "EventQueue.h"
 
 namespace Chimera
 {

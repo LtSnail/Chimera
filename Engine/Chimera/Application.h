@@ -1,9 +1,10 @@
 #pragma once
 
+#include "chpch.h"
+
 #include "Core.h"
 #include "EventQueue.h"
 
-#include <memory>
 
 namespace Chimera
 {
