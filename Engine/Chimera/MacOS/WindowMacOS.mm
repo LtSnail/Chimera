@@ -76,9 +76,7 @@ namespace Chimera
     }
 
     void WindowMacOS::Init(const WindowProps& props, EventQueue& eventQueue)
-    {	
-        UNUSED(eventQueue);
-
+    {
         NSRect rect = NSMakeRect(props.x, props.y, props.Width, props.Height);
         NSWindowStyleMask styleMask = NSWindowStyleMaskTitled;
         if (props.Closable)
