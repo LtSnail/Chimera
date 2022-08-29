@@ -28,6 +28,12 @@ namespace Chimera
             
             while (!eventQueue->Empty())
             {
+                auto ev = eventQueue->Front();
+                if ((*ev).GetEventType() == EventType::EventTypeWindowClose)
+                {
+                    isRunning = false;
+                }
+
                 eventQueue->Pop();
             }
         }

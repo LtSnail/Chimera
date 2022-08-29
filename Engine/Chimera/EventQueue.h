@@ -10,7 +10,7 @@ namespace Chimera
     {
     public:
         virtual void Update() = 0;
-        virtual const Event& Front() = 0;
+        virtual std::shared_ptr<const Event> Front() = 0;
         virtual void Pop() = 0;
         virtual bool Empty() = 0;
 
