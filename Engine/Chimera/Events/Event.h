@@ -1,8 +1,9 @@
 #pragma once
 
+#include "chpch.h"
+
 #include "Core.h"
 
-#include <string>
 
 namespace Chimera
 {
