@@ -97,11 +97,12 @@ namespace Chimera
         }
         
         // Setup NSWindow
-        ChimeraWindow* w = [[ChimeraWindow alloc]
+        m_Window = (__bridge_retained void*)[[ChimeraWindow alloc]
                 initWithContentRect: rect
                 styleMask: styleMask
                 backing: NSBackingStoreBuffered
                 defer: NO];
+        ChimeraWindow* w = (__bridge ChimeraWindow*)m_Window;
         
         NSString* title = [NSString stringWithCString:props.Title.c_str()
                                     encoding:[NSString defaultCStringEncoding]];
@@ -112,7 +113,7 @@ namespace Chimera
         }
 
         if(props.Centered)
-        { 
+        {
             [w center];
         }
         else
@@ -127,16 +128,16 @@ namespace Chimera
 
         // Setup NSView
         rect = [w backingAlignedRect:rect options:NSAlignAllEdgesOutward];
-        ChimeraView* v = [[ChimeraView alloc] initWithFrame:rect];
+        m_View = (__bridge_retained void*)[[ChimeraView alloc] initWithFrame:rect];
+        ChimeraView* v = (__bridge ChimeraView*)m_View;
+        
         [v setHidden:NO];
         [v setNeedsDisplay:YES];
         [v setWantsLayer:YES];
 
         [w setContentView:v];
         [w makeKeyAndOrderFront:NSApp];
-	
-        m_Window = ((__bridge_retained void*)w);
-        m_View = ((__bridge_retained void*)v);
+    
         eventQueue.Update();
         m_Props = props;
     }
@@ -144,7 +145,8 @@ namespace Chimera
     void WindowMacOS::Shutdown()
     {
         // Return ownership to ARC
-        __unused id windowObj = (__bridge_transfer id)m_Window;
+        // Returning window to ARC causes EXC_BAD_ACCESS on autorealease
+        //__unused id windowObj = (__bridge_transfer id)m_Window;
         __unused id viewObj = (__bridge_transfer id)m_View;
     }
 
