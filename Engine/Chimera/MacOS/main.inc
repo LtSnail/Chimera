@@ -31,23 +31,23 @@
 
 int main(int argc, const char * argv[]) 
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	ChimeraApplication* applicationObject = [ChimeraApplication alloc];
-
-    Chimera::Application* app = Chimera::CreateApplication();
-    applicationObject.application = app;
-
-    if ([applicationObject respondsToSelector:@selector(run)])
+	@autoreleasepool 
 	{
-		[applicationObject
-			performSelectorOnMainThread:@selector(run)
-			withObject:nil
-			waitUntilDone:YES];
-	}
-	
-	[pool release];
+		ChimeraApplication* applicationObject = [ChimeraApplication alloc];
 
-    delete app;
+		Chimera::Application* app = Chimera::CreateApplication();
+		applicationObject.application = app;
+
+		if ([applicationObject respondsToSelector:@selector(run)])
+		{
+			[applicationObject
+				performSelectorOnMainThread:@selector(run)
+				withObject:nil
+				waitUntilDone:YES];
+		}
+
+		delete app;
+	}
 	
 	return 0;
 }
