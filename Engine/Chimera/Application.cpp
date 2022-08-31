@@ -1,13 +1,12 @@
 #include "Application.h"
 
-#include "EventQueue.h"
-#include "Window.h"
 
 namespace Chimera
 {
     Application::Application()
     {
-
+        m_EventQueue = EventQueue::CreateEventQueue();
+        m_Window = Window::CreateAppWindow(WindowProps(), *m_EventQueue);
     }
 
     Application::~Application()
@@ -17,24 +16,21 @@ namespace Chimera
 
     void Application::Run()
     {
-        auto eventQueue = EventQueue::CreateEventQueue();
-        auto window = Window::CreateAppWindow(WindowProps(), *eventQueue);
-
         bool isRunning = true;
 
         while (isRunning)
         {
-            eventQueue->Update();
+            m_EventQueue->Update();
             
-            while (!eventQueue->Empty())
+            while (!m_EventQueue->Empty())
             {
-                auto ev = eventQueue->Front();
+                auto ev = m_EventQueue->Front();
                 if ((*ev).GetEventType() == EventType::EventTypeWindowClose)
                 {
                     isRunning = false;
                 }
 
-                eventQueue->Pop();
+                m_EventQueue->Pop();
             }
         }
     }
