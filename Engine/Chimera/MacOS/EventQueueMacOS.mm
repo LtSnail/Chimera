@@ -1,31 +1,41 @@
 #include "EventQueueMacOS.h"
 
 #include "Events/ApplicationEvent.h"
+#include "Log.h"
 
 void Chimera::PushEvent(EventQueueMacOS* eq, std::shared_ptr<const Event> ev)
 {
     eq->m_Queue.push(ev);
 }
 
-@interface WindowCloseObserver : NSObject
+@interface WindowEventsObserver : NSObject
 {
 }
 @end
 
-@implementation WindowCloseObserver
+@implementation WindowEventsObserver
 {
     Chimera::EventQueueMacOS* _eq;
 }
 
 - (void)_windowWillClose: (NSNotification*) notification
 {
-    Chimera::PushEvent(_eq, std::make_shared<const Chimera::WindowsCloseEvent>());
+    Chimera::PushEvent(_eq, std::make_shared<const Chimera::WindowCloseEvent>());
+}
+
+- (void)_windowDidResize: (NSNotification*) notification
+{
+    NSWindow* window = (NSWindow*)[notification object];
+    NSRect rect = [window contentRectForFrameRect:[window frame]];
+    Chimera::PushEvent(_eq, std::make_shared<const Chimera::WindowResizeEvent>(rect.size.width, rect.size.height));
 }
 
 - (instancetype)initWithEventQueue: (Chimera::EventQueueMacOS*) eq
 {
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(_windowWillClose:)
         name: NSWindowWillCloseNotification object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(_windowDidResize:)
+        name:NSWindowDidResizeNotification object:nil];
 
     self = [super init];
     if (self) {
@@ -41,14 +51,14 @@ namespace Chimera
 {
     EventQueueMacOS::EventQueueMacOS()
     {
-        WindowCloseObserver* observerObj = [[WindowCloseObserver alloc] initWithEventQueue:this];
-        m_WindowCloseObserver = ((__bridge_retained void*)observerObj);
+        WindowEventsObserver* observerObj = [[WindowEventsObserver alloc] initWithEventQueue:this];
+        m_WindowEventsObserver = ((__bridge_retained void*)observerObj);
     }
 
     EventQueueMacOS::~EventQueueMacOS()
     {
         // Return ownership to ARC
-        __unused id observerObj = (__bridge_transfer id)m_WindowCloseObserver;
+        __unused id observerObj = (__bridge_transfer id)m_WindowEventsObserver;
     }
 
     void EventQueueMacOS::Update()

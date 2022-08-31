@@ -12,19 +12,25 @@ namespace Chimera
 
         inline unsigned int GetWidth() const { return m_Width; }
         inline unsigned int GetHeight() const { return m_Height; }
+        
+        std::string ToString() const
+        {
+            std::stringstream ss;
+            ss << "WindowResizeEvent: w: " << m_Width << ", h: " << m_Height;
+            return ss.str();
+        }
 
-
-    EVENT_CLASS_TYPE(WindowResize)
-    EVENT_CLASS_CATEGORY(EventCategoryApplication)
+        EVENT_CLASS_TYPE(WindowResize)
+        EVENT_CLASS_CATEGORY(EventCategoryApplication)
 
     private:
         unsigned int m_Width, m_Height;
     };
 
-    class CHIMERA_API WindowsCloseEvent : public Event
+    class CHIMERA_API WindowCloseEvent : public Event
     {
     public:
-        WindowsCloseEvent() = default;
+        WindowCloseEvent() = default;
 
         EVENT_CLASS_TYPE(WindowClose)
         EVENT_CLASS_CATEGORY(EventCategoryApplication)

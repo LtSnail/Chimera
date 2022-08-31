@@ -19,7 +19,7 @@ namespace Chimera
         friend void PushEvent(EventQueueMacOS* eq, std::shared_ptr<const Event> ev);
         std::queue<std::shared_ptr<const Event>> m_Queue;
 
-        // WindowCloseObserver*
-        void* m_WindowCloseObserver;
+        // WindowEventsObserver*
+        void* m_WindowEventsObserver;
     };
 }
