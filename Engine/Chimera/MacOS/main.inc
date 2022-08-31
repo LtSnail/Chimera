@@ -4,6 +4,8 @@
 
 #include "chpch.h"
 
+#include "Log.h"
+
 @interface ChimeraApplication : NSApplication
 
 @property Chimera::Application* application;
@@ -33,6 +35,8 @@ int main(int argc, const char * argv[])
 {
 	@autoreleasepool 
 	{
+        Chimera::Log::Init();
+         
 		ChimeraApplication* applicationObject = [ChimeraApplication alloc];
 
 		Chimera::Application* app = Chimera::CreateApplication();

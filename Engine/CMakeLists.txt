@@ -89,6 +89,8 @@ target_precompile_headers( ChimeraEngine PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/chp
 target_compile_definitions( ChimeraEngine PRIVATE CHIMERA_BUILD_LIB )
 target_compile_features( ChimeraEngine PUBLIC cxx_std_17 )
 
+target_compile_definitions( ChimeraEngine PUBLIC CHIMERA_ENABLE_ASSERTS )
+
 if (MSVC)
     target_compile_options( ChimeraEngine PRIVATE /W4 /WX /permissive- )
 else()
