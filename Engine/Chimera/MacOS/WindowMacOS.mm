@@ -70,9 +70,9 @@ namespace Chimera
         Shutdown();
     }
 
-    void WindowMacOS::OnUpdate()
+    void WindowMacOS::Update()
     {
-
+        [NSApp updateWindows];
     }
 
     void WindowMacOS::Init(const WindowProps& props, EventQueue& eventQueue)

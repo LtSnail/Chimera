@@ -8,7 +8,7 @@ namespace Chimera
         WindowsWindow(const WindowProps& props, EventQueue& eventQueue);
         ~WindowsWindow();
 
-        virtual void OnUpdate() override;
+        virtual void Update() override;
 
         inline virtual unsigned int GetWidth() const override { return m_Props.Width; }
         inline virtual unsigned int GetHeight() const override { return m_Props.Height; }

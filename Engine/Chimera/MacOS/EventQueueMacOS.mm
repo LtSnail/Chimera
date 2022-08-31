@@ -88,9 +88,7 @@ namespace Chimera
                 [NSApp sendEvent:nsEvent];
             }
             while (nsEvent);
-            
         }
-        [NSApp updateWindows];
     }
 
     std::shared_ptr<const Event> EventQueueMacOS::Front()

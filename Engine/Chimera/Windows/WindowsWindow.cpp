@@ -13,7 +13,7 @@ namespace Chimera
 
 	}
 
-	void WindowsWindow::OnUpdate()
+	void WindowsWindow::Update()
 	{
 
 	}

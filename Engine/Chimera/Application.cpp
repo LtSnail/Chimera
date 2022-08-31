@@ -21,6 +21,7 @@ namespace Chimera
         while (isRunning)
         {
             m_EventQueue->Update();
+            m_Window->Update();
             
             while (!m_EventQueue->Empty())
             {
